@@ -1,0 +1,98 @@
+This was in "description" and I do not remember why, so cleaning up and putting it here
+
+import PlayerDB
+
+MENU_PROMPT = """-- Basketball Players --
+
+Choose an option:
+
+1) Add player
+2) See all players
+3) Find a player by name
+4) Find a player by team
+5) Find a player by player id
+6) Delete a player
+7) Add player by primary key
+10) Exit
+
+Your selection:"""
+
+
+def menu():
+    connection = PlayerDB.connect()
+    PlayerDB.create_tables(connection)
+
+    while (user_input := input(MENU_PROMPT)) != "10":
+        if user_input == "1":
+            prompt_add_new_player(connection)
+        elif user_input == "2":
+            prompt_see_all_players(connection)
+        elif user_input == "3":
+            prompt_find_player_by_name(connection)
+        elif user_input == "4":
+            prompt_find_player_by_team(connection)
+        elif user_input == "5":
+            prompt_find_player_by_playerid(connection)
+        elif user_input == '6':
+            prompt_delete_player(connection)
+        elif user_input == '7':
+            prompt_add_primary_key(connection)
+        else:
+            print("Invalid input, please try again.")
+
+
+def prompt_add_new_player(connection):
+    team_id = int(input("Enter team_id:"))
+    first_name = input("Enter player's first name:").capitalize()
+    last_name = input("Enter player's last name:").capitalize()
+
+    PlayerDB.add_player(connection, team_id, first_name, last_name)
+
+
+def prompt_see_all_players(connection):
+    players = PlayerDB.get_all_players(connection)
+
+    for player in players:
+        print(f"{player[2]} {player[3]}, Team: {player[1]}")
+
+
+def prompt_find_player_by_name(connection):
+    name = input("Enter player's last name to find:").capitalize()
+    players = PlayerDB.get_players_by_name(connection, name)
+
+    for player in players:
+        print(f"{player[2]} {player[3]}, Team: {player[1]}")
+
+
+def prompt_find_player_by_team(connection):
+    team_id = int(input("Enter the team id corresponding to the team #:"))
+    players = PlayerDB.get_players_by_team(connection, team_id)
+
+    for player in players:
+        print(f"{player[2]} {player[3]}")
+
+
+def prompt_delete_player(connection):
+    player_id = int(input("Enter player's player id to delete:"))
+
+    PlayerDB.delete_player(connection, player_id)
+
+
+def prompt_find_player_by_playerid(connection):
+    player_id = int(input("Enter the player id corresponding to the player's #"))
+    players = PlayerDB.get_players_by_playerid(connection, player_id)
+
+    for player in players:
+        print(f"{player[2]} {player[3]}")
+
+
+def prompt_add_primary_key(connection):
+    player_id = int(input("Enter player_id:"))
+    team_id = int(input("Enter team_id:"))
+    first_name = input("Enter player's first name:").capitalize()
+    last_name = input("Enter player's last name:").capitalize()
+
+    PlayerDB.insert_primary_key(connection, player_id, team_id, first_name, last_name)
+
+
+menu()

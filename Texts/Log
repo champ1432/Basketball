@@ -1,0 +1,27 @@
+--- LOG ---
+
+February 3rd, 2021:
+    * In lineups, created commands that depict who is playing and modified the players teams so they now correlate to the teams that are playing
+    * Inputted the Jazz team into the Team DB
+    * Reorganized files and created specific folders/directories for each file (App, Texts)
+    * Created a log and edited TO-DO LIST
+    * Created 4th team, Cavs, and inputted roster/stats/etc
+
+February 4th, 2021:
+    * Created a command in PlayerDB that finds teams by team_id
+    * Edited Home and Away ratings to allude to the teams better (don't know if this messes things up, but I like it and may be useful, seems better)
+    * Added Commentary to Sim and hope to be able to put it side by side (A. wait for GUI / B. see if there is a command for specific amount of spaces)
+
+February 6th, 2021:
+    * Changed Commentary function to 3 individual functions (useful for tkinter)
+    * *For Tkinter to work with functions, print needs to be return *
+    * Created a Tkinter file where the GUI shows the opening commentary with return statements.
+
+February 7th, 2021:
+    * Created Game Sim function. The live sim has a 50% make/miss probability as the only option
+    * Pieced together multiple variations, but finally found something that worked
+    * Updated TO-DO List
+
+March 5th, 2021:
+    * Added a delay to how fast the sim displays in the console, Game_timer and Intro_timer
+    * Tried to align lineups side by side, but failed. Instead, simplified lineups
