@@ -13,8 +13,7 @@ February 4th, 2021:
     * Added Commentary to Sim and hope to be able to put it side by side (A. wait for GUI / B. see if there is a command for specific amount of spaces)
 
 February 6th, 2021:
-    * Changed Commentary function to 3 individual functions (useful for tkinter)
-    * *For Tkinter to work with functions, print needs to be return *
+    * Changed Commentary function to 3 individual functions (useful for tkinter){For Tkinter to work with functions, print needs to be return}
     * Created a Tkinter file where the GUI shows the opening commentary with return statements.
 
 February 7th, 2021:
@@ -25,3 +24,9 @@ February 7th, 2021:
 March 5th, 2021:
     * Added a delay to how fast the sim displays in the console, Game_timer and Intro_timer
     * Tried to align lineups side by side, but failed. Instead, simplified lineups
+
+March 7th, 2021:
+    * Added Project to GitHub
+    * Renamed live sim functions to differentiate from live and quick
+    * Added a quick sim function to sim the games without the play-by-play
+    * Added Changes to GitHub

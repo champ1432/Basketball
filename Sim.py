@@ -13,7 +13,7 @@ game_timer = .75
 intro_timer = 1
 
 
-def commentary():
+def lcommentary():
     sleep(intro_timer)
     print("Welcome to {}, where the visiting {} {} will square off against the {}.".format(home[0][1], away[0][1],
                                                                                            away[0][2], home[0][2]))
@@ -24,12 +24,12 @@ home_starting = f"Starting Lineups for the {home[0][2]}: \n {home_point_guard[0]
 away_starting = f"Starting Lineups for the {away[0][2]}: \n {away_point_guard[0][0]} {away_point_guard[0][1]} \n {away_shooting_guard[0][0]} {away_shooting_guard[0][1]}  \n {away_small_forward[0][0]} {away_small_forward[0][1]} \n {away_power_forward[0][0]} {away_power_forward[0][1]} \n {away_center[0][0]} {away_center[0][1]} \n"
 
 
-def starting_lineups():
+def lstarting_lineups():
     sleep(intro_timer)
     print(home_starting + '\n' + away_starting)
 
 
-def jump_ball():
+def ljump_ball():
     global pos
     if pos == 0:
         sleep(intro_timer)
@@ -46,7 +46,20 @@ def jump_ball():
             pos = int(f"{away[0][0]}")
 
 
-def sim():
+def qjump_ball():
+    global pos
+    if pos == 0:
+        sleep(intro_timer)
+        outcome = random.randint(0, 1)
+        if outcome == 0:
+            sleep(intro_timer)
+            pos = int(f"{home[0][0]}")
+        else:
+            sleep(intro_timer)
+            pos = int(f"{away[0][0]}")
+
+
+def lsim():
     global quarter_clock, home_score, away_score, pos, time_of_possession
     shot_success = random.randint(0, 1)
     last_second_shot = random.randint(0, 2)
@@ -102,7 +115,7 @@ def sim():
             if last_second_shot == 1:
                 sleep(game_timer)
                 print(f"\n{shooter[0][0]} {shooter[0][1]} MAKES IT AT THE BUZZER!")
-                home_score = home_score + 2
+                away_score = away_score + 2
                 quarter_clock = 0
                 print(f"{quarter_clock}:00 END OF QUARTER! \n{home[0][2]}: {home_score} - {away[0][2]}: {away_score}")
             else:
@@ -112,22 +125,74 @@ def sim():
                 print(f"{quarter_clock}:00 END OF QUARTER! \n{home[0][2]}: {home_score} - {away[0][2]}: {away_score}")
 
 
-def quarter_sim():
+def qsim():
+    global quarter_clock, home_score, away_score, pos, time_of_possession
+    shot_success = random.randint(0, 1)
+    last_second_shot = random.randint(0, 2)
+    if pos == home_team:
+        if quarter_clock > 24:
+            if shot_success == 0:
+                quarter_clock = quarter_clock - random.randint(10, 24)
+                pos = away_team
+            elif shot_success == 1:
+                home_score = home_score + 2
+                quarter_clock = quarter_clock - random.randint(10, 24)
+                pos = away_team
+        else:
+            if last_second_shot == 1:
+                home_score = home_score + 2
+                quarter_clock = 0
+            else:
+                quarter_clock = 0
+    elif pos == away_team:
+        if quarter_clock > 24:
+            if shot_success == 0:
+                quarter_clock = quarter_clock - random.randint(10, 24)
+                pos = home_team
+            elif shot_success == 1:
+                away_score = away_score + 2
+                quarter_clock = quarter_clock - random.randint(10, 24)
+                pos = home_team
+        else:
+            if last_second_shot == 1:
+                away_score = away_score + 2
+                quarter_clock = 0
+            else:
+                quarter_clock = 0
+
+
+def lquarter_sim():
     global quarter_clock
     quarter_clock = 720
     while quarter_clock > 0:
-        sim()
+        lsim()
+
+
+def qquarter_sim():
+    global quarter_clock
+    quarter_clock = 720
+    while quarter_clock > 0:
+        qsim()
 
 
 def live_sim():
-    commentary()
-    starting_lineups()
-    jump_ball()
-    quarter_sim()
-    quarter_sim()
-    quarter_sim()
-    quarter_sim()
+    lcommentary()
+    lstarting_lineups()
+    ljump_ball()
+    lquarter_sim()
+    lquarter_sim()
+    lquarter_sim()
+    lquarter_sim()
+
+
+def quick_sim():
+    qjump_ball()
+    qquarter_sim()
+    qquarter_sim()
+    qquarter_sim()
+    qquarter_sim()
+    print(f"Final Score \n{home[0][2]}: {home_score} - {away[0][2]}: {away_score}")
 
 
 if __name__ == "__main__":
-    live_sim()
+    quick_sim()
