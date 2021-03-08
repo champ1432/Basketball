@@ -25,7 +25,3 @@ def create_player_stats_table(connection):
 def add_player_stats(connection, player_id, points, rebounds, assists):
     with connection:
         connection.execute(INSERT_PLAYER_STATS, (player_id, points, rebounds, assists))
-
-
-# with connection:
-   # connection.execute(CREATE_PLAYER_STATS_TABLE)

@@ -1,7 +1,7 @@
 -- TO-DO --
 
 URGENT:
-    * ADD DESCRIPTIONS TO FILES
+    *
 
 App:
     * Add position columns to app
@@ -12,6 +12,7 @@ Future:
     * Create a subbing system into sim
     * Readjust database ids by teams and players in alphabetical order
     * Move Sim files into a Game Functions file
+    * Create text-based console version of game and GUI version
 
 Not Necessary ATM:
     * Link "Find Player" with team
@@ -22,3 +23,4 @@ Sim:
     * Gather player stats and store them
     * Account for Overtime
     * Update sim engine
+    * Add 3 point shots

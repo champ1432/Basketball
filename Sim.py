@@ -1,34 +1,41 @@
 from Lineups import *
 from time import sleep
 
+# connect to DataBase
 connection = PlayerDB.connect()
 
+# basic Sim settings:
+# scores, who has possession(0-1), time of game, amount of time run by shot clock, amount of time left, print timers
 home_score = 0
 away_score = 0
 pos = 0
-quarter_clock = 12 * 60
+t = 12
+quarter_clock = t * 60
 time_runoff = random.randint(10, 24)
 time_of_possession = quarter_clock - time_runoff
 game_timer = .75
 intro_timer = 1
 
 
-def lcommentary():
+# print commentary for live sim
+def commentary():
     sleep(intro_timer)
     print("Welcome to {}, where the visiting {} {} will square off against the {}.".format(home[0][1], away[0][1],
                                                                                            away[0][2], home[0][2]))
 
 
+# lineup variables
 home_starting = f"Starting Lineups for the {home[0][2]}: \n {home_point_guard[0][0]} {home_point_guard[0][1]} \n {home_shooting_guard[0][0]} {home_shooting_guard[0][1]}  \n {home_small_forward[0][0]} {home_small_forward[0][1]} \n {home_power_forward[0][0]} {home_power_forward[0][1]} \n {home_center[0][0]} {home_center[0][1]} \n"
-
 away_starting = f"Starting Lineups for the {away[0][2]}: \n {away_point_guard[0][0]} {away_point_guard[0][1]} \n {away_shooting_guard[0][0]} {away_shooting_guard[0][1]}  \n {away_small_forward[0][0]} {away_small_forward[0][1]} \n {away_power_forward[0][0]} {away_power_forward[0][1]} \n {away_center[0][0]} {away_center[0][1]} \n"
 
 
-def lstarting_lineups():
+# print lineups for live sim
+def starting_lineups():
     sleep(intro_timer)
     print(home_starting + '\n' + away_starting)
 
 
+# live sim play-by-play for jump
 def ljump_ball():
     global pos
     if pos == 0:
@@ -46,6 +53,7 @@ def ljump_ball():
             pos = int(f"{away[0][0]}")
 
 
+# jump ball for quick sim
 def qjump_ball():
     global pos
     if pos == 0:
@@ -59,6 +67,7 @@ def qjump_ball():
             pos = int(f"{away[0][0]}")
 
 
+# live sim play-by-play
 def lsim():
     global quarter_clock, home_score, away_score, pos, time_of_possession
     shot_success = random.randint(0, 1)
@@ -125,6 +134,7 @@ def lsim():
                 print(f"{quarter_clock}:00 END OF QUARTER! \n{home[0][2]}: {home_score} - {away[0][2]}: {away_score}")
 
 
+# quick sim
 def qsim():
     global quarter_clock, home_score, away_score, pos, time_of_possession
     shot_success = random.randint(0, 1)
@@ -161,23 +171,26 @@ def qsim():
                 quarter_clock = 0
 
 
+# live quarter sim
 def lquarter_sim():
     global quarter_clock
-    quarter_clock = 720
+    quarter_clock = t * 60
     while quarter_clock > 0:
         lsim()
 
 
+# quick quarter sim
 def qquarter_sim():
     global quarter_clock
-    quarter_clock = 720
+    quarter_clock = t * 60
     while quarter_clock > 0:
         qsim()
 
 
+# live sim = play-by-play
 def live_sim():
-    lcommentary()
-    lstarting_lineups()
+    commentary()
+    starting_lineups()
     ljump_ball()
     lquarter_sim()
     lquarter_sim()
@@ -185,6 +198,7 @@ def live_sim():
     lquarter_sim()
 
 
+# quick sim
 def quick_sim():
     qjump_ball()
     qquarter_sim()
@@ -193,6 +207,6 @@ def quick_sim():
     qquarter_sim()
     print(f"Final Score \n{home[0][2]}: {home_score} - {away[0][2]}: {away_score}")
 
-
+# runs function in this file
 if __name__ == "__main__":
     quick_sim()

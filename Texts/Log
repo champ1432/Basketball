@@ -27,6 +27,10 @@ March 5th, 2021:
 
 March 7th, 2021:
     * Added Project to GitHub
+    * Fixed a little bug that caused the home team to add points if the away team scored a last second shot
     * Renamed live sim functions to differentiate from live and quick
     * Added a quick sim function to sim the games without the play-by-play
-    * Added Changes to GitHub
+    * Added descriptions to main game function files
+    * Moved some useless files
+    * Updated TO-DO List
+    * Added changes to GitHub
