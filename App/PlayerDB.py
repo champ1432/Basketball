@@ -12,7 +12,7 @@ GET_ALL_PLAYERS = "SELECT * FROM Players;"
 GET_PLAYERS_BY_NAME = "SELECT * FROM Players WHERE last_name = ?;"
 GET_PLAYERS_BY_TEAM = "SELECT * FROM Players WHERE tid = ?;"
 GET_PLAYERS_BY_PLAYERID = "SELECT * FROM Players WHERE player_id = ?;"
-GET_PLAYERS_BY_POSITION = "SELECT first_name, last_name, tid FROM Players WHERE position = ? AND tid = ?;"
+GET_PLAYERS_BY_POSITION = "SELECT first_name, last_name, tid, player_id FROM Players WHERE position = ? AND tid = ?;"
 GET_ALL_PLAYERS_TID_BY_POSITION_TEAM = "SELECT tid FROM Players WHERE position = ? AND tid = ?"
 
 CONNECT_PLAYERS_TO_TEAMS = "SELECT first_name, last_name, team_name, position FROM Players INNER JOIN Teams ON Teams.team_id = Players.tid WHERE position = ? AND tid = ?"

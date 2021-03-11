@@ -42,3 +42,15 @@ away_center = PlayerDB.get_players_by_position(connection, 5, away_team)
 home_players_on_court = [home_point_guard, home_shooting_guard, home_small_forward, home_power_forward, home_center]
 away_players_on_court = [away_point_guard, away_shooting_guard, away_small_forward, away_power_forward, away_center]
 
+
+# adds game to players stat
+def add_game():
+    for player in home_players_on_court:
+        PlayerStatsDB.add_player_games(connection, player[0][3])
+
+    for player in away_players_on_court:
+        PlayerStatsDB.add_player_games(connection, player[0][3])
+
+
+# clears Player Stats DataBase
+# PlayerStatsDB.clear_stats(connection)

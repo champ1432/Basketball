@@ -33,4 +33,14 @@ March 7th, 2021:
     * Added descriptions to main game function files
     * Moved some useless files
     * Updated TO-DO List
-    * Added changes to GitHub
+    * Pushed changes to GitHub
+
+March 10th, 2021:
+    * Added Seasons and Games columns to PlayerStats Table (season:1000 = test)
+    * Added commands to PlayerStatsDB to update a Player's points, rebounds, assists, games as well as an option to clear values
+    * Added player_id as one of the attributes given in GET_PLAYER_BY_POSITION in PlayerDB, used to keep track of updating stats
+    * Added a function to add a game to the player's table that is playing
+    * Added a way to keep up with points in Player_Stats table, used in Sim Functions
+    * Found a way to figure out PPG by subtracting total points by the change
+    * Updated TO-DO List
+    * Pushed changes to GitHub

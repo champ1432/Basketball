@@ -1,9 +1,10 @@
 -- TO-DO --
+March 10th, 2021
 
 URGENT:
     *
 
-App:
+App (may be pointless):
     * Add position columns to app
     * Fix and clean up app
 
@@ -15,12 +16,15 @@ Future:
     * Create text-based console version of game and GUI version
 
 Not Necessary ATM:
-    * Link "Find Player" with team
+    * Link "Find Player" with team (may be possible but I don't remember what this is for)
     * Change all positions from numerical values to alphabetical values
 
 Sim:
     * Print lineups side by side (possible with GUI)
-    * Gather player stats and store them
+    * Gather player stats and store them (Halfway done)
     * Account for Overtime
     * Update sim engine
     * Add 3 point shots
+    * Add a box score
+    * Account for rebounds AND assists
+    * Have two games with the other being with the other 2 teams
