@@ -53,4 +53,4 @@ def add_game():
 
 
 # clears Player Stats DataBase
-# PlayerStatsDB.clear_stats(connection)
+PlayerStatsDB.clear_stats(connection)

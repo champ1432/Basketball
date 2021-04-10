@@ -2,7 +2,7 @@
 March 10th, 2021
 
 URGENT:
-    *
+    * Fix order of Player DB to go in order of position 1-5 in respective teams (2-8 messed up)
 
 App (may be pointless):
     * Add position columns to app

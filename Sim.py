@@ -228,8 +228,8 @@ def quick_sim():
 
 # runs function in this file
 if __name__ == "__main__":
-    quick_sim()
+    live_sim()
     # finds points scored in game
-    efs = PlayerStatsDB.get_players_points(connection, x)
-    ppg = efs[0][1] - c
-    print(ppg)
+    # efs = PlayerStatsDB.get_players_points(connection, x)
+    # ppg = efs[0][1] - c
+    # print(ppg)
